@@ -8,51 +8,82 @@
                 <h3>Set Scheduled Mail</h3>
             </div>
             <div class="card-body d-flex flex-column">
-                <p>From : yourmailaddress@server.com | This come to db</p>
-                <form action="/"method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i
+                                class="fa-solid fa-clipboard-user"></i></span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="{{mail}} " aria-label="From"
+                        aria-describedby="basic-addon1" name="sender_mail" disabled>
+                </div>
+                <form action="/" method="post">
                     {%csrf_token%}
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">@</span>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="email" class="form-control" placeholder="To " aria-label="to"
+                            aria-describedby="basic-addon1" name="receiver_mail">
                     </div>
-                    <input type="email" class="form-control" placeholder="To " aria-label="to"
-                        aria-describedby="basic-addon1" name="receiver_mail">
-                </div>
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">
-                            <i class="fa-solid fa-envelopes-bulk"></i>
-                        </span>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa-solid fa-envelopes-bulk"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Subject" aria-label="Subject"
+                            aria-describedby="basic-addon1" name="subject">
                     </div>
-                    <input type="text" class="form-control" placeholder="Subject" aria-label="Subject"
-                        aria-describedby="basic-addon1" name="subject">
-                </div>
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">
-                            <i class="fa-solid fa-message"></i> </span>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa-solid fa-message"></i> </span>
+                        </div>
+                        <textarea class="form-control" rows="3" placeholder="Message" name="message"></textarea>
+
                     </div>
-                    <textarea class="form-control" rows="3" placeholder="Message" name="message"></textarea>
 
-                </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa-solid fa-calendar-days"></i> </span>
+                        </div>
+                        <input type="datetime-local" name="date" id="date">
+                        <button class="btn btn-primary mt-2 sendBtn"><i class="fa-solid fa-paper-plane"></i>&nbsp;
+                            Send</button>
+                </form>
+            </div>
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">
-                            <i class="fa-solid fa-calendar-days"></i> </span>
-                    </div>
-                    <input type="datetime-local" name="date" id="date">
-                    <button class="btn btn-primary mt-2 sendBtn"><i class="fa-solid fa-paper-plane"></i>&nbsp;
-                        Send</button>
-                    </form>
-                </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">Sended field</div>
+
+<div id="infoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Information</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Please read the information carefully. Then make the necessary settings mentioned below. The
+                    application will not work if the specified settings are not made.</p>
+                <code>some inf</code>
 
             </div>
         </div>
     </div>
-
-    <div class="col-md-6">Sended field</div>
 </div>
+<script>
+
+    $(document).ready(function () {
+        //sayfa açıldığında otomatik açılması için
+
+        $("#infoModal").modal('show');
+    });
+</script>
 {% endblock %}
